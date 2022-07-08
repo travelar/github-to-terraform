@@ -110,7 +110,7 @@ resource "github_membership" "$USER_NAME" {
   or remember to pass them in via the environment
 - run the scriptm, perhaps passing the necessary environment variables
   ```
-  GITHUB_TOKEN=12334...4555 ORG=my_org $ORG-to-terraform.sh
+  GITHUB_TOKEN=12334...4555 ORG=my_org github-to-terraform.sh
   ```
 - run a terraform plan to see that everything was imported and that no changes are required.
   - some manual modifications _could_ be required since not every field supported by Terraform has been implemented by this script.
