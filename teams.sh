@@ -65,7 +65,7 @@ resource "github_team" "${TEAM_NAME_LOWER}" {
 EOF
     fi
 
-    #terraform import "github_team.${TEAM_NAME_LOWER}" "${i}"
+    terraform import "github_team.${TEAM_NAME_LOWER}" "${i}"
   done
  done
 }
@@ -141,7 +141,7 @@ get_team_repos () {
     ADMIN_PERMS=$(echo "$PERMS_PAYLOAD" | jq -r .permissions.admin )
     PUSH_PERMS=$(echo "$PERMS_PAYLOAD" | jq -r .permissions.push )
     PULL_PERMS=$(echo "$PERMS_PAYLOAD" | jq -r .permissions.pull )
-    #TEAM_ID=$(curl -s -u $GITHUB_USER:$GITHUB_TOKEN "${API_URL_PREFIX}/orgs/${ORG}/teams?${PAGE}&per_page=100" | jq -r .id)
+    TEAM_ID=$(curl -s -u $GITHUB_USER:$GITHUB_TOKEN "${API_URL_PREFIX}/orgs/${ORG}/teams?${PAGE}&per_page=100" | jq -r .id)
 
       # Terraform doesn't like '.' in resource names, so if one exists then replace it with a dash
       TEAM_NAME_LOWER=$(echo "${TEAM_NAME}" | tr "-" "_" | tr '[:upper:]' '[:lower:]')
